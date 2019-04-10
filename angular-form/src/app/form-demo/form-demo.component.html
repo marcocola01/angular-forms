@@ -1,11 +1,64 @@
 <div class="container">
  <h2>Demo Form: Sku</h2>
- <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)" class="jumbotron">
+<form [formGroup]="myForm"
+       (ngSubmit)="onSubmit(myForm.value)"
+       class="jumbotron">
+
    <div class="form-group">
      <label for="skuInput">SKU</label>
-     <input type="text" id="skuInput" placeholder="SKU" name="sku" 
-            [formControl]="myForm.controls['sku']" class="form-control">
+     <input type="text"
+           id="skuInput"
+           placeholder="SKU"
+           name="sku"
+           [formControl]="myForm.controls['sku']"
+           class="form-control">
    </div>
+   
+   <div class="form-group">
+     <label for="agostoInput">AGOSTO</label>
+     <input type="month"
+           id="agostoInput"
+           placeholder="AGOSTO"
+           name="agosto"
+           [formControl]="myForm.controls['AGOSTO']"
+           class="form-control">
+   </div>
+   
+   <div class="form-group">
+     <label for="numeroInput">65</label>
+     <input type="number"
+           id="numeroInput"
+           placeholder="65"
+           name="65"
+           [formControl]="myForm.controls['65']"
+           class="form-control">
+   </div>
+
+   <div *ngIf="!myForm.controls['sku'].valid"
+         class="alert alert-danger">SKU is invalid
+   </div>
+   <div *ngIf="myForm.controls['sku'].hasError('required')"
+         class="alert alert-danger">SKU is required
+   </div>
+   
+    <div *ngIf="!myForm.controls['AGOSTO'].valid"
+         class="alert alert-danger">AGOSTO is invalid
+   </div>
+   <div *ngIf="myForm.controls['AGOSTO'].hasError('required')"
+         class="alert alert-danger">AGOSTO is required
+   </div>
+   
+    <div *ngIf="!myForm.controls['65'].valid"
+         class="alert alert-danger">65 is invalid
+   </div>
+   <div *ngIf="myForm.controls['65'].hasError('required')"
+         class="alert alert-danger">65 is required
+   </div>
+   
+   
    <button type="submit" class="btn btn-primary">Submit</button>
  </form>
+ 
+ <div *ngIf="!myForm.valid"
+ class="alert alert-danger">Form is invalid</div>
 </div>
